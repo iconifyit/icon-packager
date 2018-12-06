@@ -21,14 +21,14 @@ To use this script, you will need to copy the entire **Icon Packager** folder to
 
 ## Usage
 
-1. After you follow the installation instructions above, go to _File &gt; Scripts &gt; Icon Packager_ to launch the script. You will see a dialog like the one below. <br><br>![Icon Packager settings dialog](./images/icon-packager-01.png)
+1. After you follow the installation instructions above, go to _File &gt; Scripts &gt; Icon Packager_ to launch the script. You will see a dialog like the one below. <br><br>![Icon Packager settings dialog](./images/icon-packager-01@700w.png)
 
 1. **Icon Packager** divides your larger collection into smaller sets, creates a contact sheet for the icons in each set, arranged into a grid. The icons for each smaller set are copied into a sub-folder named in form _Set 01_, _Set 02_, etc. <br><br>Using the dialog inputs, specify the page width and height, the number of columns and rows, the scale of the imports (from 1 to 100 - do not include the percent sign). Once you have the values you want, you can click the _Save Preset_ button to save these settings for future use.
 1. You might notice that **Icon Packager** does not allow you to explicitly specify the number of subsets. This is intentional. You can indirectly specify the number of smaller sets based on how many rows and columns you specify for the preview images. The reason for doing it this way is to allow you to focus on creating your preview images and let **Icon Packager** make sure the numbers add up. Simply specify how many icons you want on each preview image, and **Icon Packager** will create the appropriate sub-sets for you.
 1. Click the _Choose Folder_ button to select your folder of SVG files (_NOTE: Icon Packager was created to create previews of icon sets so for now it only works with SVG files_).
 1. Double-check your settings and click _Ok_. **Icon Packager** will display a progress dialog to let you know how many files are left to import. Once the files are imported and arranged, the file will be saved to the name you specified.
 1. If you checked the _Logging?_ checkbox, you can view the log file in _/your-home-folder/ai-icon-packager_ where _~/_. For example, on a Mac the folder can be found at _/Users/yourname/ai-icon-packager/_ (or _~/ai-icon-packager/_ for shorthand). The preset configuration files can also be found in this location. <br><br>![Icon Packager settings dialog](./images/icon-packager-02@700w.png)
-1. The resulting output of <strong>Icon Packager</strong> is a subfolder containing a master file of the preview images (Contact Sheets) and another sub-folder named for each set with the icons from that set. ![Icon Packager settings dialog](./images/icon-packager-03@700w.png)
+1. The resulting output of <strong>Icon Packager</strong> is a subfolder containing a master file of the preview images (Contact Sheets) and another sub-folder named for each set with the icons from that set. <br><br>![Icon Packager settings dialog](./images/icon-packager-03@700w.png)
 
 
 ### Custom Configuration
