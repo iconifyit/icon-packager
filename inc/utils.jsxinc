@@ -57,7 +57,7 @@ Utils.getScreenSize = function() {
             var zoom = view.zoom;
             view.zoom = 1;
             var screenSize = {
-                left   : parseInt(view.bounds[0]),
+                left   : parseInt(view.bounds[0]) / 2,
                 top    : parseInt(view.bounds[1]),
                 right  : parseInt(view.bounds[2]),
                 bottom : parseInt(view.bounds[3]),
@@ -325,7 +325,7 @@ Utils.getFilesInSubfolders = function( srcFolder ) {
 
     var allFiles, theFolders, svgFileList;
 
-    if ( ! srcFolder instanceof Folder) return;
+    if (! new Folder(srcFolder).exists) return;
 
     allFiles    = srcFolder.getFiles();
     theFolders  = [];

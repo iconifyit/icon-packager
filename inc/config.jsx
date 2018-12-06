@@ -175,7 +175,7 @@ var CONFIG = {
      * Log file location
      */
 
-    LOG_FILE_PATH: Folder.myDocuments + '/ai-icon-packager/logs/' + Utils.doDateFormat(new Date()) + '-log.txt',
+    LOG_FILE_PATH: Folder.myDocuments + '/ai-icon-packager/logs/' + Utils.doDateFormat(new Date()) + '.log',
 
     /**
      * Default path separator

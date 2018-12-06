@@ -44,23 +44,12 @@
 
 #target Illustrator
 
-#include "utils.jsx";
+#include "inc/utils.jsxinc";
+#include "inc/Helpers.jsxinc";
+#include "inc/JSON.jsxinc";
+#include "inc/config.jsx";
+#include "inc/lang.jsxinc";
 
-if (typeof(Utils) != 'object') {
-    alert('Missing required class Utils');
-}
-
-#include "config.jsx";
-
-if (typeof(CONFIG) != 'object') {
-    alert('Missing required class CONFIG');
-}
-
-#include "lang.jsx";
-
-if (typeof(LANG) != 'object') {
-    alert('Missing required class LANG');
-}
 
 var originalInteractionLevel = userInteractionLevel;
 userInteractionLevel = UserInteractionLevel.DONTDISPLAYALERTS;
@@ -194,6 +183,8 @@ function doDisplayDialog() {
             CONFIG.FRM_WIDTH       = CONFIG.COL_WIDTH;
             CONFIG.FRM_HEIGHT      = CONFIG.ROW_HEIGHT;
             CONFIG.OUTPUT_FILENAME = dialog.filename.text;
+
+            Utils.logger(JSON.stringify(CONFIG));
         }
         dialog.updateConfig = function() {
             updateConfig();
@@ -400,13 +391,12 @@ function doCreateContactSheet() {
         return;
     }
 
-    srcFolder = CONFIG.SRC_FOLDER;
-
+    srcFolder     = CONFIG.SRC_FOLDER;
     srcFolderName = srcFolder.name;
 
-    if ( srcFolder == null ) return;
+    if (srcFolder == null) return;
 
-    if (srcFileList = Utils.getFilesInSubfolders( srcFolder )) {
+    if (srcFileList = srcFolder.getFiles(/\.svg$/i)) {
 
         if (Utils.trim(CONFIG.OUTPUT_FILENAME) == "") {
             CONFIG.OUTPUT_FILENAME = srcFolder.name.replace(" ", "-") + "-preview-image.ai";
@@ -423,17 +413,25 @@ function doCreateContactSheet() {
                 CONFIG.PG_HEIGHT,
                 CONFIG.PG_COUNT,
                 DocumentArtboardLayout.GridByCol,
-                10,
-                Math.round(Math.sqrt(CONFIG.PG_COUNT))
+                32,
+                CONFIG.COLS
             );
         }
         catch( ex ) {
             Utils.logger(LANG.DOC_NOT_CREATED + ex);
+            Utils.logger([
+                DocumentColorSpace.RGB,
+                CONFIG.PG_WIDTH,
+                CONFIG.PG_HEIGHT,
+                CONFIG.PG_COUNT,
+                DocumentArtboardLayout.GridByCol,
+                32,
+                CONFIG.COLS
+            ]);
             return;
         }
 
         Utils.showProgressBar(srcFileList.length);
-
         Utils.progressBarText("Sorting file list");
         Utils.sortFileList(srcFileList);
 
